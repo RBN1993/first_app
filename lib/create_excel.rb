@@ -63,9 +63,11 @@ module Create_excel
 
     # Foto head izq
     fotos_sheet1.insert_image('A1',"google.png",0,0,0.40,0.35)
+    fotos_sheet2.insert_image('A1',"google.png",0,0,0.40,0.35)
 
     # Foto head derecha
     fotos_sheet1.insert_image('Q1',"google.png",350,0,0.18,0.15)
+    fotos_sheet2.insert_image('Q1',"google.png",350,0,0.18,0.15)
 
     # Set del ancho de las correpondientes celdas
     rango = ['A:H','J:P','R:Z']
@@ -73,9 +75,11 @@ module Create_excel
 
     rango.each do |i|
       fotos_sheet1.set_column(i,0.50)
+      fotos_sheet2.set_column(i,0.50)
     end
     rango2.each do |i|
       fotos_sheet1.set_column(i,60)
+      fotos_sheet2.set_column(i,60)
     end
 
 
@@ -84,12 +88,16 @@ module Create_excel
 
     range.each do |i|
       fotos_sheet1.merge_range(i,'',format)
+      fotos_sheet2.merge_range(i,'',format)
     end
 
     fotos_sheet1.write(2, 8, obj[id_json]["title1"], format)
+    fotos_sheet2.write(2, 8, obj[id_json]["title1"], format)
     fotos_sheet1.write(3,8,"Ano #{DateTime.now.year - 2007}º de Concessão", format)
+    fotos_sheet2.write(3,8,"Ano #{DateTime.now.year - 2007}º de Concessão", format)
 
     fotos_sheet1.write(5,0, obj[id_json]["title2"],format2)
+    fotos_sheet2.write(5,0, obj[id_json]["title2"],format2)
 
   end
 
@@ -105,9 +113,11 @@ module Create_excel
 
     range.each do |i|
       fotos_sheet1.merge_range(i,'',format)
+      fotos_sheet2.merge_range(i,'',format)
     end
     range2.each do |i|
       fotos_sheet1.set_row(i,180)
+      fotos_sheet2.set_row(i,180)
     end
   end
 
@@ -115,6 +125,7 @@ module Create_excel
     range = [8,10]
     range.each do |i|
       fotos_sheet1.set_row(i,30)
+      fotos_sheet2.set_row(i,30)
     end
   end
 
