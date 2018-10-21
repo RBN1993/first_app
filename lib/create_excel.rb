@@ -3,6 +3,7 @@ require 'write_xlsx'
 require 'json'
 require 'rails'
 # Esta gema solo crea un excel desde cero, no es posible leer uno existente
+# cuando se quiera usar imagenes dentro del excel
 module Create_excel
   def self.hi
     puts "New global excel"
