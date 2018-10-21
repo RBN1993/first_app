@@ -1,0 +1,22 @@
+%body
+  .hero
+    .hero-container
+      %h1.title
+        Organizer-2018
+      .badge
+        %img(alt="img" src="/assets/badge.jpg")/
+      .description
+        %p
+          Con esta aplicación puedes llevar la cuenta de las horas trabajadas por cada persona.
+          Inicia sesión y lleva la cuenta de las horas.
+      %form.form(action="/users/new" method="POST" )
+        %p Inicio sesión Organizer-2018
+        %input(placeholder="Correo electrónico" type="email")/
+        %input(placeholder="Password" type="text")/
+        %button(type="submit") Comienza ahora
+      .countdown
+        %p Propiedad de @rbn1993
+        %p
+          - now = DateTime.now
+          %span= now.strftime("%H")+"h"
+          %span= now.strftime("%M")+"m"

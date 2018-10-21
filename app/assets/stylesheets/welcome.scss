@@ -1,0 +1,118 @@
+// Place all the styles related to the Welcome controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+body {/*Cuidado con usar .body porque no es una clase*/
+  font-family: 'Lato', sans-serif;
+  margin: 0;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(auto, 1024px); /*Min autoajustable y máximo de 1024px*/
+  justify-content: center;
+  padding: 32px 15px;
+  background: #234A71;
+  color: white;
+}
+
+.hero-container{
+  display: grid;
+  grid-template-columns: 90px 1fr 320px; /*Bagde a 70px, contenido central dinámico 1fr y el formulario 320px */
+  grid-template-areas: ". title form" // EL BADGE PDT PEDIR A JLRINCON
+                        "badge description form"
+                        ". countdown form";
+  grid-gap: 10px;
+}
+
+.badge{
+  grid-area: badge;
+  align-self: end;
+  text-align: center;
+}
+
+.badge img{
+  max-width: 70px; /*Para que no se superponga la imagen*/
+  border-radius: 10px;
+}
+.title {
+  grid-area: title;
+  font-size: 36px;
+  font-weight: normal;
+  margin: 0;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  align-self: center;
+}
+.form{
+  grid-area: form;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 1.5em; /*~24px*/
+  border-radius: 10px;
+}
+.form input{
+  width: 100%;
+  padding: 10px;
+  font-size: 16px; /*No se heredan las fuentes*/
+  border: 1px solid #dbdbe2;
+  border-radius: 5px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+.form p{
+  font-size: 20px;
+  color: #3a3b3f;
+  margin-bottom: 1em;
+}
+.form button{
+  background: #98CB2E;
+  color: white;
+  padding: 10px 15px; /* 10 arriba y 10 abajo 15 a los lados */
+  border-radius: 5px;
+  border: none;
+  border-bottom: 5px solid #6D944C;
+  display: inline-block; /*Para que el text-aling del padre centre el boton*/
+  font-size: 16px;
+}
+.countdown{
+  grid-area: countdown;
+  font-size: 20px;
+  text-align: center;
+  font-weight: 300;/*Fuente ligera que se ve bien*/
+}
+.countdown span{
+  font-size: 33px;
+}
+.countdown span:after{
+  content: ":"; /*Content siempre se debe configurar para que surja efecto*/
+  display: inline-block;
+  margin: 0px 5px; /*Se puede usar margin gracias a inline block 0 izq 5 drc*/
+}
+.countdown span:last-child:after{
+  display: none;
+}
+p{
+  margin: 0;/*Para trabajar mejor con grid*/
+}
+.description{
+  grid-area: description;
+  align-self: center;
+  text-align: center;
+}
+
+@media screen and (max-width: 768px){
+  .hero-container{
+    display: grid;
+    grid-template-columns: 0 1fr; /*Para hacerlo responsive desapareceria el form */
+    grid-template-areas: "badge title" /*Quedarían dos columnas y agregamos una fila */
+    "description description" /*Para que ocupe las 2 columnas*/
+    "form form"/*Idem y además seguimos dejando el countdown debajo*/
+    "countdown countdown";
+    grid-gap: 10px;
+  }
+  .badge{
+    grid-area: badge;
+    margin-left: 150px;
+  }
+}
