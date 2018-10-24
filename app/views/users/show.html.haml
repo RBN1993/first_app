@@ -1,0 +1,10 @@
+%p
+  %strong User-name:
+  = @user.name
+%p
+  %strong User-surname:
+  = @user.surname
+%div
+  = link_to "DOC", user_descarga_doc_path(@user.id), :target => '_blank'
+%div
+  = link_to "Excel", user_descarga_excel_path(@user.id), :target => '_blank'

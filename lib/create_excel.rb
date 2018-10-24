@@ -43,7 +43,6 @@ module Create_excel
 
     system('soffice --headless --convert-to xls:"MS Excel 97" /tmp/fotos_arteris_excel.xlsx --outdir /tmp/')
     fotos_book.close
-    # send_file "/tmp/fotos_arteris_excel.xlsx", :filename => "fotos_arteris_excel.xlsx", :type => 'application/xlsx'
   end
 
   def self.new_excel_head(fotos_book, fotos_sheet1, fotos_sheet2, obj, id_json)
