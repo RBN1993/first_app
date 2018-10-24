@@ -4,6 +4,10 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.5.0'
 #My gems installed
 gem "haml-rails", "~> 1.0"
+gem "omnidocx"
+gem 'mime'
+gem 'caracal'
+gem 'write_xlsx'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.1'
 # Use sqlite3 as the database for Active Record
