@@ -1,9 +1,9 @@
 %p
-  %strong User-name:
-  = @user.name
+  %strong User-email:
+  = @user.email
 %p
-  %strong User-surname:
-  = @user.surname
+  %strong User-password:
+  = 'Cifrado'
 %div
   = link_to "DOC", user_descarga_doc_path(@user.id), :target => '_blank'
 %div

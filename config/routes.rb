@@ -1,11 +1,16 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  get 'welcome/index'
 
+  ### PAGINA INICIAL LOGIN ###
+  root 'welcome#index'
+  # root 'sessions#index'
+
+  ### RESOURCES ###
   resources :users do
     get 'descarga_doc'
     get 'descarga_excel'
   end
-  root 'welcome#index'
+  get    '/login',   to: 'sessions#new'
+  post   '/login',   to: 'sessions#create'
+  delete '/logout',  to: 'sessions#destroy'
 
 end
