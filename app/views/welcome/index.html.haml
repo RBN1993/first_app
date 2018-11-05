@@ -9,11 +9,21 @@
         %p
           Con esta aplicación puedes llevar la cuenta de las horas trabajadas por cada persona.
           Inicia sesión y lleva la cuenta de las horas.
-      %form.form(action="/users/1" method="GET" )
-        %p Inicio sesión Organizer-2018
-        %input(placeholder="Correo electrónico" type="email")/
-        %input(placeholder="Password" type="text")/
-        %button(type="submit") Comienza ahora
+      -#%form.form(action="/users" method="POST" )
+      -#  %p Inicio sesión Organizer-2018
+      -#  %input(placeholder="Correo electrónico" type="email")/
+      -#  %input(placeholder="Password" type="text")/
+      -#  %button(type="submit" name="commit") Comienza ahora
+
+      = form_with class:'form', scope: :session, url: login_path, local: true do |form|
+        %p= "Inicio sesión Organizer-2018"
+        %div
+          = form.text_field :email, placeholder:"Correo electrónico", type:"email"
+        %div
+          = form.text_field :password, placeholder:"Password", type:"password"
+        %button(type="submit" name="commit" value="Iniciar" )
+          = "Comienza ahora"
+          -#= form.submit "Comienza ahora"
       .countdown
         %p Propiedad de @rbn1993
         %p

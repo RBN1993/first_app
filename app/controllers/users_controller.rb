@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
 
+  def index
+    @users = User.all
+  end
   def show
     @user = User.find(params[:id])
   end
@@ -24,6 +27,25 @@ class UsersController < ApplicationController
     @my_data[[1,2]]= 23
     @my_data[[5,6]]= 42
     Caracal::Document.save 'output_doc.docx' do |docx|
+      docx.page_size do
+        width       15840       # sets the page width. units in twips.
+        height      12240       # sets the page height. units in twips.
+        orientation :landscape  # sets the printer orientation. accepts :portrait and :landscape.
+      end
+      docx.page_margins do
+        left    720     # sets the left margin. units in twips.
+        right   720     # sets the right margin. units in twips.
+        top     1440    # sets the top margin. units in twips.
+        bottom  1440    # sets the bottom margin. units in twips.
+      end
+      docx.page_numbers true do
+        align :center
+        label ''
+      end
+
+      docx.font name: 'Courier New'
+
+      docx.style id: 'AltFont', name: 'altFont', font: 'Palatino'
       # page 1
       docx.h1 'Page 1 Header'
       docx.hr
@@ -53,6 +75,7 @@ class UsersController < ApplicationController
 
     send_file "output_doc.docx", :filename => "output_doc.docx", :type => 'application/docx'
   end
+
   def descarga_excel
     require 'create_excel'
 
@@ -66,5 +89,5 @@ end
 
 private
 def user_params
-  params.require(:user).permit(:name, :surname)
+  params.require(:user).permit(:email, :password)
 end
