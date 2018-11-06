@@ -10,6 +10,8 @@ gem 'caracal'
 gem 'write_xlsx'
 gem 'bootstrap'
 gem 'jquery-rails'
+gem 'cancan'
+
 
 gem 'bcrypt',         '3.1.12'
 
