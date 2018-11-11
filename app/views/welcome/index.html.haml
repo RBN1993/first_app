@@ -21,10 +21,13 @@
           = form.text_field :email, placeholder:"Correo electrónico", type:"email"
         %div
           = form.text_field :password, placeholder:"Password", type:"password"
+        %p
         %button(type="submit" name="commit" value="Iniciar" )
           = "Comienza ahora"
           -#= form.submit "Comienza ahora"
       .countdown
+        %div Nuevo usuario? #{link_to "Registrate ya!", 'users/new', style:"color:gold;"}
+        %br
         %p Propiedad de @rbn1993
         %p
           - now = DateTime.now

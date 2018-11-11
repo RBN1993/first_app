@@ -1,3 +1,60 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+body {/*Cuidado con usar .body porque no es una clase*/
+  font-family: 'Lato', sans-serif;
+  margin: 0;
+}
+.user {
+  display: block;
+  justify-content: center;
+  padding: 32px 15px;
+  background: #234A71;
+  color: black;
+}
+
+.user-container{
+  max-width: 620px;
+  margin: auto;
+}
+.form-user{
+  text-align: center;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 1.5em; /*~24px*/
+  border-radius: 10px;
+}
+.form-user input{
+  width: 100%;
+  padding: 10px;
+  font-size: 16px; /*No se heredan las fuentes*/
+  border: 1px solid #dbdbe2;
+  border-radius: 5px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  text-align: center;
+}
+.form-user p{
+  font-size: 20px;
+  color: black;
+  margin-bottom: 1em;
+}
+.form-user button{
+  background: #98CB2E;
+  color: white;
+  padding: 10px 15px; /* 10 arriba y 10 abajo 15 a los lados */
+  border-radius: 5px;
+  border: none;
+  border-bottom: 5px solid #6D944C;
+  display: inline-block; /*Para que el text-aling del padre centre el boton*/
+  font-size: 16px;
+}
+p{
+  margin: 0;/*Para trabajar mejor con grid*/
+}
+
+@media screen and (max-width: 768px){
+  .user-container{
+    display: block;
+    max-width: 550px;
+  }
+}
