@@ -1,8 +1,10 @@
 class UsersController < ApplicationController
+  skip_before_action :require_login, only: [:index, :new]
 
   def index
     @users = User.all
   end
+
   def show
     @user = User.find(params[:id])
   end
@@ -23,20 +25,20 @@ class UsersController < ApplicationController
     require 'caracal'
     # for e.g. if you had to merge two documents, just pass their entire paths in an array, if you need a page break in between documents then pass the page_break flag as true
     # Omnidocx::Docx.merge_documents(['/tmp/doc1.docx', '/tmp/doc2.docx'], '/tmp/output_doc.docx', true)
-    @my_data= Hash.new
-    @my_data[[1,2]]= 23
-    @my_data[[5,6]]= 42
+    @my_data = Hash.new
+    @my_data[[1, 2]] = 23
+    @my_data[[5, 6]] = 42
     Caracal::Document.save 'output_doc.docx' do |docx|
       docx.page_size do
-        width       15840       # sets the page width. units in twips.
-        height      12240       # sets the page height. units in twips.
-        orientation :landscape  # sets the printer orientation. accepts :portrait and :landscape.
+        width 15840 # sets the page width. units in twips.
+        height 12240 # sets the page height. units in twips.
+        orientation :landscape # sets the printer orientation. accepts :portrait and :landscape.
       end
       docx.page_margins do
-        left    720     # sets the left margin. units in twips.
-        right   720     # sets the right margin. units in twips.
-        top     1440    # sets the top margin. units in twips.
-        bottom  1440    # sets the bottom margin. units in twips.
+        left 720 # sets the left margin. units in twips.
+        right 720 # sets the right margin. units in twips.
+        top 1440 # sets the top margin. units in twips.
+        bottom 1440 # sets the bottom margin. units in twips.
       end
       docx.page_numbers true do
         align :center
@@ -51,7 +53,7 @@ class UsersController < ApplicationController
       docx.hr
       docx.p
       docx.h2 'Section 1'
-      docx.p  'Lorem ipsum dolor....'
+      docx.p 'Lorem ipsum dolor....'
       docx.p
       docx.table @my_data, border_size: 4 do
         cell_style rows[0], background: 'cccccc', bold: true
@@ -63,7 +65,7 @@ class UsersController < ApplicationController
       docx.hr
       docx.p
       docx.h2 'Section 2'
-      docx.p  'Lorem ipsum dolor....'
+      docx.p 'Lorem ipsum dolor....'
       docx.ul do
         li 'Item 1'
         li 'Item 2'
@@ -88,6 +90,7 @@ class UsersController < ApplicationController
 end
 
 private
+
 def user_params
   params.require(:user).permit(:email, :password)
 end
