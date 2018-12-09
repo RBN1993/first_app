@@ -15,9 +15,13 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-
-    @user.save
-    redirect_to @user
+    if @user.name.present? and @user.surname.present? and @user.email.present? and @user.password.present?
+      @user.save
+      byebug
+      redirect_to @user, success: 'Registrado correctamente'
+    else
+      redirect_to new_user_path, info: 'Todos los campos son obligatorios'
+    end
   end
 
   def descarga_doc
@@ -92,5 +96,5 @@ end
 private
 
 def user_params
-  params.require(:user).permit(:email, :password)
+  params.require(:user).permit(:name,:surname,:email, :password)
 end
