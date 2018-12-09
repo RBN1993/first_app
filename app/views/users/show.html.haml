@@ -1,12 +1,17 @@
-%p
-  %strong User-email:
-  = @user.email
-%p
-  %strong User-password:
-  = 'Cifrado'
-%div
-  = link_to "DOC", user_descarga_doc_path(@user.id), :target => '_blank'
-%div
-  = link_to "Excel", user_descarga_excel_path(@user.id), :target => '_blank'
-%div
-  = link_to "SALIR", logout_path, method: :delete
+.user
+  .user-container
+    %p
+      %strong Nombre:
+      = @user.name + ' ' + @user.surname
+    %p
+      %strong E-mail:
+      = @user.email
+    %p
+      %strong Contraseña:
+      = 'Cifrado'
+    %div
+      = link_to "DOC", user_descarga_doc_path(@user.id), :target => '_blank'
+    %div
+      = link_to "Excel", user_descarga_excel_path(@user.id), :target => '_blank'
+    %div
+      = link_to "SALIR", logout_path, method: :delete
